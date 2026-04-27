@@ -1,39 +1,49 @@
-<div data-component-theme="portalThemeColor8" class="row sectionBlockLayout img-div">
-    <div class="container">
-        <div class="col-md-12 columnBlockLayout" id="layout-title">
-            <h1>Bienvenido a My Task</h1>
-            <h4>Administra tus tareas de forma sencilla y eficiente</h4>
-            <button class="button1 about-me">Conocé acerca de nosotros</button>
-        </div>
+<div data-component-theme="portalThemeColor8" class="row sectionBlockLayout img-div" style="display: flex; flex-wrap: wrap; padding: 8px; margin: 0px;">
+  <div class="container">
+    <div id="layout-title" class="col-md-12 columnBlockLayout" style="min-width: 250px; width: 100%; display: flex; flex-grow: 1; flex-direction: column; margin: 180px 0px;">
+      <h1>Bienvenido a My Task</h1>
+      <h4>Administra tus tareas de forma sencilla y eficiente</h4>
+      <button class="button1 about-me">Conocé acerca de nosotros</button>
     </div>
+  </div>
 </div>
+<div data-component-theme="portalThemeColor7" id="layout-info" class="row sectionBlockLayout" style="margin: 0px; width: 100%; display: flex; flex-wrap: wrap; min-height: auto; padding: 30px 0px;">
+  <div class="container">
+    <div class="col-md-12 columnBlockLayout content-layout-info" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 250px;">
+      <h2>Lista de Tareas</h2>
+      <p style="text-align: center; max-width: 700px; margin: 0 auto 20px;">Visualiza todas tus tareas actuales, edítalas o elimínalas fácilmente con nuestra interfaz moderna y responsiva.</p>
+      <div id="taskList" style="max-width: 900px; margin: 0 auto;"><!-- Aquí se cargarán las tareas mediante Web API y Liquid --></div>
+    </div>
+  </div>
+</div>
+<div data-component-theme="portalThemeColor7" id="task-layout-container" class="row sectionBlockLayout" style="margin: 0px; width: 100%; display: flex; flex-wrap: wrap; min-height: auto; padding: 30px 0px;">
+  <div class="container">
+    <div class="col-md-6 columnBlockLayout" style="min-width: 250px; flex-grow: 1; display: flex; flex-direction: column; margin: 0px 15px;">
+      <h3>Crear Tarea</h3>
+      <p>Agrega nuevas tareas para mantener tu lista actualizada y organizada.</p>
+      <button class="button1" style="width: 140px;">Nueva Tarea</button>
+    </div>
+    <div class="col-md-6 columnBlockLayout" style="min-width: 250px; flex-grow: 1; display: flex; flex-direction: column; margin: 0px 15px;">
+      <h3>Editar o Eliminar</h3>
+      <p>Selecciona cualquier tarea para modificar sus detalles o eliminarla de tu lista.</p>
+      <button class="button1 manage-task" style="width: 140px;">Administrar Tareas</button>
+    </div>
+  </div>
+</div>
+<script>
+  const reSizeImg = () => {
+      document.querySelector(".img-div").style.width = window.innerWidth;
+  }
 
-<div data-component-theme="portalThemeColor7" class="row sectionBlockLayout" id="layout-info">
-    <div class="container">
-        <div class="col-md-12 columnBlockLayout content-layout-info">
-            <h2>Lista de Tareas</h2>
-            <p style="text-align: center; max-width: 700px; margin: 0 auto 20px;">Visualiza todas tus tareas actuales,
-                edítalas o elimínalas fácilmente con nuestra interfaz moderna y responsiva.</p>
-            <div id="taskList" style="max-width: 900px; margin: 0 auto;">
-                <!-- Aquí se cargarán las tareas mediante Web API y Liquid -->
-            </div>
-        </div>
-    </div>
-</div>
+  reSizeImg();
 
-<div data-component-theme="portalThemeColor7" class="row sectionBlockLayout" id="task-layout-container">
-    <div class="container">
-        <div class="col-md-6 columnBlockLayout"
-            style="flex-grow: 1; display: flex; flex-direction: column; margin: 0 15px;">
-            <h3>Crear Tarea</h3>
-            <p>Agrega nuevas tareas para mantener tu lista actualizada y organizada.</p>
-            <button class="button1" style="width: 140px;">Nueva Tarea</button>
-        </div>
-        <div class="col-md-6 columnBlockLayout"
-            style="flex-grow: 1; display: flex; flex-direction: column; margin: 0 15px;">
-            <h3>Editar o Eliminar</h3>
-            <p>Selecciona cualquier tarea para modificar sus detalles o eliminarla de tu lista.</p>
-            <button class="button1" style="width: 140px;">Administrar Tareas</button>
-        </div>
-    </div>
-</div>
+  document.querySelector('.about-me').addEventListener('click', ()=>{
+    location.href = `${window.location.origin}/acerca-de/`;
+  })
+
+  document.querySelector('.manage-task').addEventListener('click', ()=>{
+    location.href = `${window.location.origin}/items/`;
+  })
+
+  window.addEventListener('resize', () => reSizeImg());
+</script>
